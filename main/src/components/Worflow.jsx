@@ -68,20 +68,14 @@ function Flow({ intl, reactFlowWrapper }) {
             if (sElm && tElm) {
                 break;
             }
-
-            // let inp = a.getElementsByClassName('output-text')[0];
-            // let out = a.getElementsByClassName('input-text')[0];
-            // setTimeout(() => {
-            //     let inpTxt = inp.getAttribute('io');
-            //     let outTxt = out.getAttribute('io');
-            //     console.log()
-            //     //console.log(a.getAttribute('data-id'), inp.getAttribute('io'), out)//inp.innerHTML, out.innerHTML)
-            // }, 0)
         }
 
         let inp = sElm.getElementsByClassName('input-text')[0];
         let out = tElm.getElementsByClassName('output-text')[0];
 
+        if(!inp) {
+            inp = sElm.getElementsByClassName('output-text')[0]
+        }
         setTimeout(() => {
             let inpTxt = inp.getAttribute('io').toUpperCase();
             let outTxt = out.getAttribute('io').toUpperCase();

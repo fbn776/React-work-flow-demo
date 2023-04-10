@@ -51,7 +51,7 @@ const InpNode = memo(({ data }) => {
                 </svg>
             </div>
             <div className="bg-[#f2f7fb] h-full w-[calc(100%-(55px*2))] flex items-center text-xs text-gray-600 font-semibold px-2">Input</div>
-            <div className="w-[55px] h-[55px] items-center flex justify-center font-bold border-style">{String(data).toUpperCase()}</div>
+            <div className="w-[55px] h-[55px] items-center flex justify-center font-bold border-style output-text" io={String(data).toUpperCase()}>{String(data).toUpperCase()}</div>
         </div>
         <Handle type="source" position={Position.Bottom} className="-translate-y-2 translate-x-[-50%] w-3 h-1 rounded-none opacity-20" />
     </div>)
