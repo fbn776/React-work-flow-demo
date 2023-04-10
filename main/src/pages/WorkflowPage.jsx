@@ -47,7 +47,6 @@ function WorkflowPage({ pageID, pageIDSetter }) {
     }
 
     useEffect(()=>{
-        console.log(workflow)
         setIntl(workflow.input_type);
     }, [workflow]);
 
@@ -69,7 +68,7 @@ function WorkflowPage({ pageID, pageIDSetter }) {
                         </div>
                     </div>
                     <div className="w-[calc(100%-30%)] h-full">
-                        {intl?(<WorkflowCanvas intl={intl}></WorkflowCanvas>):'Loading Data....'}
+                        {intl?(<WorkflowCanvas intl={intl}></WorkflowCanvas>):(<div className="font-semibold text-xl text-gray-400 p-5">Loading Data...</div>)}
                     </div>
                 </div>
             </div>
