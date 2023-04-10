@@ -1,4 +1,5 @@
 import {useState} from "react";
+import Loader from "./Loader";
 
 const fetchModules = (page, setter) => {
     let url = `https://64307b10d4518cfb0e50e555.mockapi.io/modules?page=${page}&limit=5`;
@@ -35,7 +36,7 @@ function Modules() {
 
     return (<>
         <div className="w-full pt-3">{
-            modules.map((val) => {
+            (modules.length > 0)?(modules.map((val) => {
                 return (
                     <div key={val.createdAt} className="overflow-hidden bg-white flex flex-row items-center justify-between w-[90%] m-auto my-2 rounded-lg border-style h-[55px]" onDragStart={(event) => onDragStart(event, JSON.stringify(val))} draggable>
                         <div className="w-[55px] h-[55px] items-center flex justify-center font-bold border-style">{val.input_type.toUpperCase()}</div>
@@ -43,18 +44,20 @@ function Modules() {
                         <div className="w-[55px] h-[55px] items-center flex justify-center font-bold border-style">{val.output_type.toUpperCase()}</div>
                     </div>
                 )
-            })
+            })): <Loader></Loader>
         }</div>
 
         <div className="w-full pb-3 flex w-full justify-center no-underline text-black">
             {pageNo > 1 ? (<a href="#" className="mx-2"
                 onClick={() => {
+                    setModules([])
                     fetchModules(pageNo - 1, setModules);
                     setPageNo(pageNo - 1);
                 }}>{'<'}</a>) : <span className="opacity-75">{'<'}</span>}
             <div className="">
                 {pageArr.map((val, index) => {
                     return <a key={index} className={"mx-1 " + (pageNo === val ? 'font-extrabold' : '')} onClick={() => {
+                        setModules([])
                         fetchModules(val, setModules);
                         setPageNo(val);
                     }}>{val}</a>
@@ -62,6 +65,7 @@ function Modules() {
             </div>
             {pageNo < 99 ? (<a href="#" className="mx-2"
                 onClick={() => {
+                    setModules([])
                     fetchModules(pageNo + 1, setModules);
                     setPageNo(pageNo + 1);
                 }}>{'>'}</a>) : <span className="opacity-50">{'>'}</span>}

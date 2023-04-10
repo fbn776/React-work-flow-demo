@@ -51,6 +51,7 @@ function Flow({ intl, reactFlowWrapper }) {
     const [edges, setEdges, onEdgesChange] = useEdgesState([]);
     const [reactFlowInstance, setReactFlowInstance] = useState(null);
 
+    
     const onConnect = useCallback((params) => {
         let s = params.source;
         let t = params.target;
@@ -73,7 +74,7 @@ function Flow({ intl, reactFlowWrapper }) {
         let inp = sElm.getElementsByClassName('input-text')[0];
         let out = tElm.getElementsByClassName('output-text')[0];
 
-        if(!inp) {
+        if (!inp) {
             inp = sElm.getElementsByClassName('output-text')[0]
         }
         setTimeout(() => {
@@ -82,6 +83,9 @@ function Flow({ intl, reactFlowWrapper }) {
             console.log(inpTxt, outTxt)
 
             if (inpTxt === outTxt) {
+                sElm.setAttribute("has-edge", true);
+                tElm.setAttribute("has-edge", true);
+
                 setEdges((eds) => addEdge(params, eds));
             }
             //console.log(a.getAttribute('data-id'), inp.getAttribute('io'), out)//inp.innerHTML, out.innerHTML)
