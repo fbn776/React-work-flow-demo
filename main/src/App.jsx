@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Home from './components/Home';
-import WorkflowPage from './components/workflow';
+import Home from './pages/Home';
+import WorkflowPage from './pages/WorkflowPage';
 
 export default function App() {
   let [currentWorkflowID, setCurrentWorkflowID] = useState(null);
